@@ -1,0 +1,31 @@
+﻿@model Simulator.Web.ViewModels.MatchesOverView
+
+<div style="float:left"><b>Team 1</b>  </div>
+<div style="float:left; padding-left:100px"><b>Team 2</b></div>
+<div style="float:left; padding-left:50px"><b>Score</b></div>
+<br />
+@{ 
+    var i = 0;
+
+}
+
+@foreach (var match in Model.Matches)
+{
+    
+    if (i == 6)
+    { 
+        <b>Re-matches</b>
+        <br />
+    }
+    <div style="float:left"> @match.FirstTeam.Name </div>
+    <div style="float:left; padding-left:40px"> <b>VS</b> </div>
+    <div style="float:left; padding-left:40px"> @match.SecondTeam.Name </div>
+    <div style="float:left; padding-left:50px"> @match.FirstTeamScore - @match.SecondTeamScore </div>
+    <br />
+    i++;
+}
+<br />
+<b>Pool info</b>
+@{
+    await Html.RenderPartialAsync("Pool/_PoolOverView", Model.PoolOverView);
+}

@@ -1,0 +1,34 @@
+﻿@model Simulator.Web.ViewModels.PoolOverView
+
+
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Points</th>
+            <th>goals for</th>
+            <th>goals against</th>
+            <th>goal difference</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @{
+            var i = 1;
+        }
+        @foreach (var team in Model.Teams)
+        {
+
+        <tr>
+            <td> @i </td>
+            <td> @team.Name </td>
+            <td> @team.TotalPoints </td>
+            <td> @team.TotalGoalsFor </td>
+            <td> @team.TotalGoalsAgaint </td>
+            <td> @team.GoalDifference </td>
+        </tr>
+            i++;
+        }
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+﻿@model Simulator.Web.ViewModels.TeamViewModel
+@{
+    for (int i = 0; i < Model.Players.Count; i++)
+    {
+        <div style="padding-right:100px">
+            <label>Set player parameters:</label>
+            <div>
+                <label>Select player position</label>
+                @{
+                    @Html.DropDownListFor(model => model.Players[i].Posistion,
+                        Html.GetEnumSelectList<Simulator.Domain.PlayerPosistionEnum>(),
+                        "Select position")
+                }
+            </div>
+
+            <div>
+                <label>Set player attack</label>
+                @Html.TextBoxFor(model => model.Players[i].Attack)
+            </div>
+
+
+            <div>
+                <label>Set player defense</label>
+                @Html.TextBoxFor(model => model.Players[i].Defense)
+            </div>
+            <br />
+        </div>
+    }
+}

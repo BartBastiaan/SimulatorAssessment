@@ -1,0 +1,50 @@
+﻿
+<div >
+    Match info
+    <div id="MatchInfo">
+        ...
+
+    </div>
+
+    <button href="#" type="button" class="btn btn-primary btn-md" onclick="StartFixedMatches()">
+        Start matches with fixed teams
+    </button>
+
+
+</div>
+
+<div>
+    <br />
+    <br />
+    <b>Create your own team configs</b>
+    <br />
+    <button href="#" type="button" class="btn btn-primary btn-md" onclick="GetTeamInfo()">
+        Get teaminfo
+    </button>
+    <button id="StartCustomMatches" hidden="hidden" href="#" type="button" class="btn btn-primary btn-md" onclick="StartCustomMatches()">
+        Start custom matches
+    </button>
+</div>
+    <form id="TeamInfo">
+
+    </form>
+
+@section Scripts
+{
+    <script>
+        function StartFixedMatches() {
+            $("#MatchInfo").load("/Match/StartFixedMatches");
+        }
+
+        function StartCustomMatches() {
+            var form = $("#TeamInfo");
+            $("#MatchInfo").load("/Match/StartCustomMatches", form.serializeArray());
+        }
+
+        function GetTeamInfo() {
+            $("#TeamInfo").load("/Team/GetTeams", function () {
+                $("#StartCustomMatches").show();
+            });
+        }
+    </script>
+}
