@@ -176,8 +176,8 @@ namespace Simulator.Services
             // Include goalkeeper score when attacking team tries to shoot
             if (includeGoalKeeper)
             {
-                var goalKeeper = team.Players.Where(x => x.Posistion == PlayerPosistionEnum.GoalKeeper).First();
-                totalPlayerScore += goalKeeper.Defense;
+                var goalKeeper = team.Players.Where(x => x.Posistion == PlayerPosistionEnum.GoalKeeper).FirstOrDefault();
+                totalPlayerScore += goalKeeper == null ? 0 : goalKeeper.Defense;
             }
 
             return totalPlayerScore;

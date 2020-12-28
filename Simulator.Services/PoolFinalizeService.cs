@@ -34,6 +34,7 @@ namespace Simulator.Services
               .ToList();
 
             var teamsWithSameResult = SearchTeamWihSameResults(orderedTeamsForPoolResult);
+            // if teams have the same result order by mutual match results
             if (teamsWithSameResult != null && teamsWithSameResult.Count > 0)
             {
                 var matchesForTeamsWithSameResult = SearchMatchesForMutualResult(teamsWithSameResult, playedMatches);
